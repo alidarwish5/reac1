@@ -1,13 +1,215 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+  --primary: #1e90ff;
+  --primary-dark: #0b61d1;
+  --bg: #f5f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #ffb020;
+  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(16,24,40,0.05);
+  --shadow-md: 0 6px 18px rgba(16,24,40,0.08);
+  --max-width: 1200px;
+  --gap: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
+
+
+.header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  background: linear-gradient(90deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  z-index:1000;
+  box-shadow: var(--shadow-md);
+}
+
+.logo{
+   display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  font-size:1.05rem;
+  color:#fff;
+}
+
+.logo img{height:40px;
+  width:40px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow: 0 6px 18px rgba(11,97,209,0.18);
+  background:linear-gradient(135deg,#fff0,#fff0)}
+.logo span{font-size:1.15rem;
+  letter-spacing:0.4px;
+  color:rgba(255,255,255,0.95);
+}
+
+
+.nav-links{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.nav-links a{
+    color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 14px;
+  border-radius:999px;
+  transition: all .16s ease;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 14px rgba(11,97,209,0.06);
+  font-size:0.95rem;
+}
+
+.nav-links a:hover{ transform:translateY(-3px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+  box-shadow: 0 12px 30px rgba(11,97,209,0.12);
+}
+
+
+.container{ 
+  max-width:var(--max-width);
+  margin: 90px auto 40px; 
+  padding:24px;
+  text-align:left;
+}
+
+
+.flight-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  margin:18px 0;
+  display:flex;
+  gap:18px;
+  align-items:center;
+  box-shadow:var(--shadow-sm);
+  border:1px solid rgba(16,24,40,0.04);
+}
+
+.flight-card img{
+  width:160px;
+  height:100px;
+  object-fit:cover;
+  border-radius:8px;
+  flex-shrink:0;
+}
+
+
+.img{ position:relative; top:0; }
+
+
+form{
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.95));
+  padding:18px;
+  border-radius:12px;
+  box-shadow:var(--shadow-sm);
+  max-width:720px;
+}
+
+input, textarea, select, button{
+  font-family:inherit;
+  font-size:0.95rem;
+  border-radius:8px;
+  border:1px solid rgba(16,24,40,0.09);
+  padding:10px 12px;
+  outline:none;
+  transition:box-shadow .12s ease, border-color .12s ease, transform .06s ease;
+  width:100%;
+  display:block;
+  margin-top:6px;
+  background:#fff;
+}
+
+input:focus, textarea:focus, select:focus{
+  border-color:var(--primary);
+  box-shadow:0 6px 18px rgba(30,144,255,0.12);
+}
+
+label{font-weight:600; color:var(--muted); font-size:0.9rem}
+
+
+button{
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  transition:transform .12s ease, background .12s ease, box-shadow .12s ease;
+  box-shadow:0 6px 14px rgba(30,144,255,0.12);
+}
+button:hover{background:var(--primary-dark); transform:translateY(-2px)}
+button:active{transform:translateY(0)}
+
+
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--card);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+th, td{
+  padding:12px 14px;
+  text-align:left;
+  border-bottom:1px solid rgba(16,24,40,0.05);
+  font-size:0.95rem;
+}
+thead th{
+  background:linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.6));
+  color:var(--muted);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:0.8rem;
+}
+tbody tr:hover{background:rgba(30,144,255,0.03)}
+
+
+.footer{
+  background:var(--primary-dark);
+  color:#fff;
+  text-align:center;
+  padding:20px 0;
+  margin-top:30px;
+  border-radius:8px;
+}
+
+
+input[type="date"]{max-width:240px}
+input[type="text"]{max-width:420px}
+form > div{margin-bottom:12px}
+h2, h3{margin:0 0 12px 0}
+
+@media (max-width: 768px){
+  .header{height:56px; padding:0 14px}
+  .logo span{font-size:1rem}
+  .container{margin:76px 16px 24px; padding:12px}
+  .flight-card{flex-direction:column; align-items:flex-start}
+  .flight-card img{width:100%; height:auto}
+  form{padding:14px}
+  th, td{padding:10px}
+}
+
+
